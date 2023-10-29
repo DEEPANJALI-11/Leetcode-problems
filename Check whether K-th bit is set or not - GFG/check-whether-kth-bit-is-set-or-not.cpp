@@ -15,7 +15,37 @@ class Solution
     // Function to check if Kth bit is set or not.
     bool checkKthBit(int n, int k)
     {
-        return( n &(1<<k));
+        // vector<int>b;
+        // int rem,binary=0,pro=1;
+        // while(n!=0){
+        //     rem=n%2;
+        //     binary=binary+(rem*pro);
+        //     n=n/2;
+        //     pro*=10;
+        // }
+        // string s="";
+        // int no=0;
+        // while(binary!=0){
+        //     int rem=binary%10;
+        //     no+=rem+no*10;
+        //     s+=no;
+        //     binary=binary/10;
+        // }
+        // return (s[k]==1);
+        vector<int>arr;
+        while(n>0){
+            int digit=n%2;
+            arr.push_back(digit);
+            n=n/2;
+        }
+        int m=arr.size()-1;
+        if(arr[k]==1 && m>=k){
+            return true;
+        }
+        else return false;
+        
+        
+       
         // Your code here
         // It can be a one liner logic!! Think of it!!
     }
