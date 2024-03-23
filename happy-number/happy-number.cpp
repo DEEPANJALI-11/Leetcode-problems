@@ -1,19 +1,19 @@
 class Solution {
 public:
-    unordered_set<int>s;
+     unordered_set<int>dub;
     bool solve(int n){
         int sum=0;
         while(n>0){
-            int temp=n%10;
-            sum+=temp*temp;
+            int t=n%10;
+            sum+=t*t;
             n/=10;
         }
         if(sum==1)
                 return true;
         else{
-            if(s.find(sum)==s.end()){
-                s.insert(sum);
-                return(solve(sum));
+            if(dub.find(sum)==dub.end()){
+                dub.insert(sum);
+                return solve(sum);
             }
         }
         return false;
