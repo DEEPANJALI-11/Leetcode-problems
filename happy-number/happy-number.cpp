@@ -1,25 +1,28 @@
 class Solution {
 public:
-     unordered_set<int>dub;
-    bool solve(int n){
+   bool solve(int n,unordered_set<int>&s){
         int sum=0;
         while(n>0){
-            int t=n%10;
-            sum+=t*t;
+            int rem=n%10;
+            sum+=rem*rem;
             n/=10;
         }
-        if(sum==1)
-                return true;
+        
+        if(sum==1){
+            return true;
+        }
         else{
-            if(dub.find(sum)==dub.end()){
-                dub.insert(sum);
-                return solve(sum);
+            if(s.find(sum)==s.end()){
+                s.insert(sum);
+                return solve(sum,s);
             }
         }
+        
         return false;
     }
     bool isHappy(int n) {
-        bool ans=solve(n);
+        unordered_set<int>s;
+        int ans=solve(n,s);
         return ans;
     }
 };
